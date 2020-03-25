@@ -17,7 +17,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Welcome to Python deployment"
+    return "Touched Gunicorn"
+
+@app.route("/ping")
+def ping():
+    return "running"
 
 
 def get_bearer():
