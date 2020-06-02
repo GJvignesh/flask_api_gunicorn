@@ -36,7 +36,7 @@ def get_bearer():
     bearer = token_response_json["access_token"]
     return bearer
 
-@app.route("/newdeploy", methods=["GET", "POST"])
+@app.route("/newdeploy", methods=["POST"])
 def newdeploy():
 
     return_response = ""
@@ -112,7 +112,7 @@ def newdeploy():
     return return_response, return_response_code
 
 
-@app.route("/redeploy", methods=["GET", "POST"])
+@app.route("/redeploy", methods=["POST"])
 def redeploy():
     return_response = ""
     return_response_code = conf.bad_req
