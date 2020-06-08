@@ -59,7 +59,7 @@ def newdeploy():
         artifactName = request.headers["artifactName"]
         targetId = request.headers["targetId"]
         logging.info("Incoming Headers")
-        logging.info(json.dumps({k:v for k, v in request.headers.items()}))
+        logging.info(json.dumps({k: v for k, v in request.headers.items()}))
 
         # Calling bearer method to get the bearer
         bearer = get_bearer()
@@ -145,7 +145,7 @@ def redeploy():
         Org_Id = request.headers["X-Anypnt-Org-Id"]
         id_ = request.headers["id"]
         logging.info("Incoming Headers")
-        logging.info(json.dumps({k:v for k, v in request.headers.iteritems()}))
+        logging.info(json.dumps({k: v for k, v in request.headers.iteritems()}))
 
         # Calling bearer method to get the bearer
         bearer = get_bearer()
