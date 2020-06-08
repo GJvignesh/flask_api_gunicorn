@@ -103,7 +103,6 @@ def newdeploy():
             file.close()
 
             # removing the saved file
-            # removing the saved file
             os.remove(os.path.join(file_name))
 
             return_response = deploy_response.json()
