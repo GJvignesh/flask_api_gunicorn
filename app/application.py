@@ -8,8 +8,9 @@ Created on Fri Mar 20 17:01:09 2020
 
 from flask import Flask
 from flask import request
-import requests     # importing the requests library
+import requests
 import os
+import json
 import properties as conf
 import logging
 
@@ -58,7 +59,7 @@ def newdeploy():
         artifactName = request.headers["artifactName"]
         targetId = request.headers["targetId"]
         logging.info("Incoming Headers")
-        logging.info(request.headers)
+        logging.info(json.dumps({k:v for k, v in request.headers.items()}))
 
         # Calling bearer method to get the bearer
         bearer = get_bearer()
@@ -84,10 +85,9 @@ def newdeploy():
             incoming_file = request.files.get('file')
             # fetching the file name
             file_name = incoming_file.filename
-            logging.info("Reading incoming deployment file -" +file_name)
+            logging.info("Reading incoming deployment file -" + file_name)
             # Saving the file to local
             incoming_file.save(file_name)
-
 
             # Opening the saved file in byte format
             file = open(file_name, "rb")
@@ -98,8 +98,7 @@ def newdeploy():
             logging.info("Calling Anypoint URL for deployment: "+deploy_url)
             # sending post request and saving response as response object
             deploy_response = requests.post(url=deploy_url, headers=deploy_headers,
-                                        data=payload,
-                                        files=files)
+                                            data=payload, files=files)
             file.close()
 
             # removing the saved file
@@ -146,7 +145,7 @@ def redeploy():
         Org_Id = request.headers["X-Anypnt-Org-Id"]
         id_ = request.headers["id"]
         logging.info("Incoming Headers")
-        logging.info(request.headers)
+        logging.info(json.dumps({k:v for k, v in request.headers.iteritems()}))
 
         # Calling bearer method to get the bearer
         bearer = get_bearer()
@@ -165,7 +164,7 @@ def redeploy():
         incoming_file = request.files.get('file')
         # fetching the file name
         file_name = incoming_file.filename
-        logging.info("Reading incoming deployment file -" +file_name)
+        logging.info("Reading incoming deployment file -" + file_name)
         # Saving the file to local
         incoming_file.save(file_name)
         # Opening the saved file in byte format
@@ -208,6 +207,7 @@ def redeploy():
         logging.info(return_response)
 
     return return_response, return_response_code
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
