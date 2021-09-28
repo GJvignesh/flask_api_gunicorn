@@ -1,6 +1,6 @@
 # Global values for Flask API
 
-token_url =  "https://anypoint.mulesoft.com/accounts/login"
+token_url =  "na"
 
 bearer_data = {"username":"na",
             "password":"na"}
@@ -9,7 +9,7 @@ auth_error = "Error while getting bearer token"
 
 bad_req =  "400 Bad Request"
     
-deploy_url = "https://anypoint.mulesoft.com/hybrid/api/v1/applications"
+deploy_url = "na"
 
 header_missing = "Make sure headers x-anypnt-env-id, \
                 x-anypnt-org-id, artifactName, targetId are avaliable"
