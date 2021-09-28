@@ -2,8 +2,8 @@
 
 token_url =  "https://anypoint.mulesoft.com/accounts/login"
 
-bearer_data = {"username":"pams_apiuser_dev",
-            "password":"Muletest1234"}
+bearer_data = {"username":"na",
+            "password":"na"}
 
 auth_error = "Error while getting bearer token"
 
